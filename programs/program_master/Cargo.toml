@@ -1,0 +1,22 @@
+[package]
+name = "exmple"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "exmple"
+
+[features]
+no-entrypoint = []
+no-idl = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.13.2"
+anchor-spl = "0.13.2"
+vipers = "0.1.1"
+solana-program = "1.7.8"
+quarry-mine = { path = "../program_fils/quarry-mine", features = ["cpi"] }
