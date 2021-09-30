@@ -4,6 +4,7 @@ use quarry_mine::UserStake;
 use quarry_mine::Rewarder;
 use quarry_mine::Miner;
 use anchor_spl::token::TokenAccount;
+use hello_world::AccountHello;
 
 use std::convert::TryInto;
 solana_program::declare_id!("4D5m2qRsaVNgmpmcCQgKr7t87nibswG4FSVrVnvhxCDB");
@@ -16,7 +17,7 @@ pub mod solana_app {
         println!("println initialise");
         Ok(())
     }
-    pub fn stake(ctx: Context<AccountStake>,amount:u64,nonce:u64) -> ProgramResult {
+   /* pub fn stake(ctx: Context<AccountStake>,amount:u64,nonce:u64) -> ProgramResult {
         msg!("hello karima");
         msg!("hello karima 2");
         println!(" 0");
@@ -61,10 +62,35 @@ pub mod solana_app {
 
     );
     msg!("hello karima 5");
-    quarry_mine::cpi::stake_tokens(cpi_ctx,amount);
+    quarry_mine::cpi::stake_tokens(cpi_ctx,amount);//problem
     msg!("hello karima 6");
         println!(" 3");
      
+        Ok(())
+    }*/
+    pub fn set_hello(ctx: Context<AccountH>,nonce:u64) -> ProgramResult {
+        msg!("set_hello");
+
+        let cpi_program = ctx.accounts.program_helloword.clone();
+        let cpi_accounts = AccountHello {
+            owner:ctx.accounts.owner.clone(),
+        }; 
+        let seeds=&[&ctx.accounts.account_program_address.key.to_bytes()[..32], &[nonce.try_into().unwrap()]];
+        let expected_allocated_key = Pubkey::create_program_address(seeds, ctx.accounts.program_id.key)?;
+        if *ctx.accounts.program_address.key != expected_allocated_key {
+            // allocated key does not match the derived address
+            return Err(ProgramError::InvalidArgument);
+        }
+        let signe_seeds=&[&seeds[..]];
+        let cpi_ctx = CpiContext::new_with_signer(
+            cpi_program,
+            cpi_accounts,
+            signe_seeds,
+    
+        );
+        msg!("set_hello before cpi");
+        hello_world::cpi::hello(cpi_ctx);//// problem
+        msg!("set_hello after cpi");
         Ok(())
     }
 }
@@ -72,6 +98,21 @@ pub mod solana_app {
 #[derive(Accounts)]
 pub struct Initialize {}
 
+#[derive(Accounts)]
+pub struct AccountH<'info>{
+ //owner 
+ pub owner:AccountInfo<'info>,
+ //program id hello word 
+ pub program_helloword:AccountInfo<'info>,
+ //programAddress 
+pub program_address:AccountInfo<'info>,
+ //programAddress 
+ pub account_program_address:AccountInfo<'info>,
+//program id 
+pub program_id:AccountInfo<'info>,
+
+
+}
 
 #[derive(Accounts)]
 pub struct AccountStake<'info>{

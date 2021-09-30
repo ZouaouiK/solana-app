@@ -40,7 +40,7 @@ async function main() {
     [createAccountProgram.publicKey.toBuffer()],
     programId,
    ); 
-  await program.rpc.stake(new anchor.BN(amount),new anchor.BN(nonce),{
+  /* await program.rpc.stake(new anchor.BN(amount),new anchor.BN(nonce),{
       accounts:{
           authority,
           miner,
@@ -56,7 +56,19 @@ async function main() {
           programId
       },
       signers: [authorityAccount],
-  });  
+  });  */ 
+
+let programHelloword=new anchor.web3.PublicKey("4CruKf2nxgZeJXTua6QLFXHQBfymeg9PxoQvsqiJxBHA");
+let owner= anchor.web3.Keypair.generate().publicKey;
+ await program.rpc.setHello(new anchor.BN(nonce),{
+  accounts:{
+    owner,
+     programHelloword,
+    programAddress,
+    accountProgramAddress:createAccountProgram.publicKey,
+    programId 
+  }
+}); 
   // #endregion main
   //await program.rpc.stake();
 }
