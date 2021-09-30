@@ -1,12 +1,12 @@
 [package]
-name = "exmple"
+name = "solana_app"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "exmple"
+name = "solana_app"
 
 [features]
 no-entrypoint = []
@@ -16,7 +16,7 @@ default = []
 
 [dependencies]
 anchor-lang = "0.13.2"
-anchor-spl = "0.13.2"
-vipers = "0.1.1"
+quarry-mine = { version = "1.1.0", path = "../quarry-mine", features = ["cpi"] }
 solana-program = "1.7.8"
-quarry-mine = { path = "../program_fils/quarry-mine", features = ["cpi"] }
+vipers = "0.1.1"
+anchor-spl = "0.13.2"

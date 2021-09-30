@@ -11,7 +11,7 @@ use vipers::validate::Validate;
 
 mod account_validators;
 
-solana_program::declare_id!("Kh9wm1TUnBUQu7Pv1HG48wXNfxAW4GQMYKZZkECAmwR");
+solana_program::declare_id!("3zUhiXEPsiQgCGTmEhtU9zyEyR2VTdqyRahCGR8o2UtL");
 
 
 #[program]

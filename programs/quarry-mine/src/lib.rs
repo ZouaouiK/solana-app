@@ -29,7 +29,7 @@ pub mod rewarder;
 
 use crate::quarry::StakeAction;
 
-solana_program::declare_id!("75pEMcMxmPHypBSVkw8PNbNQrm8n5oCjyV7pnd7rfHW2");
+solana_program::declare_id!("81XaDHvvgWGE7PPw1Xaid7Bi5ARBYV7HeEm61rNT2swG");
 
 /// Maximum number of tokens that can be rewarded by a [Rewarder] per year.
 pub const MAX_ANNUAL_REWARDS_RATE: u64 = u64::MAX >> 3;

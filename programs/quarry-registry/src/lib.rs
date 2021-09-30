@@ -7,7 +7,7 @@ use quarry_mine::Rewarder;
 
 mod account_validators;
 
-solana_program::declare_id!("2UtKte63z3vBj4asCF9SnyCfagPSibLZoLbsmmsKsKhN");
+solana_program::declare_id!("GkoxWP8skornufPmCogw6fYueRAYfApexdmAAVe7PKWm");
 
 #[program]
 pub mod quarry_registry {

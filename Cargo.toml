@@ -1,7 +1,4 @@
 [workspace]
 members = [
-    "programs/program_master",
-    "programs/program_fils/quarry-mine",
-    "programs/program_fils/quarry-mint-wrapper",
-    "programs/program_fils/quarry-registry",
+    "programs/*"
 ]
