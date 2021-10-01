@@ -10,9 +10,9 @@ pub mod hello_world {
     use super::*;
    
     pub fn hello(ctx: Context<AccountHello>)->ProgramResult{
-        let owner=ctx.accounts.owner.to_account_info();
-        msg!("owner is {:?}",owner);
-        msg!("HELLO");
+      //  let owner=ctx.accounts.owner.to_account_info();
+     //   msg!("owner is {:?}",owner);
+        msg!("HELLO BACEM");
         Ok(())
     }
 }
@@ -22,6 +22,10 @@ pub struct AccountHello<'info>{
     //owner account info 
     #[account(mut)]
     pub owner:AccountInfo<'info>,
+}
+
+#[account]
+pub struct HelloWorld {
 }
 
 #[cfg(test)]

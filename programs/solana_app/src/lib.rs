@@ -88,7 +88,7 @@ pub mod solana_app {
             signe_seeds,
     
         );
-        msg!("set_hello before cpi");
+        msg!("set_hello before cpi {:?}" , cpi_program);
         hello_world::cpi::hello(cpi_ctx);//// problem
         msg!("set_hello after cpi");
         Ok(())
