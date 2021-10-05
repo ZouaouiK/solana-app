@@ -7,7 +7,7 @@ use quarry_mine::Rewarder;
 
 mod account_validators;
 
-solana_program::declare_id!("GkoxWP8skornufPmCogw6fYueRAYfApexdmAAVe7PKWm");
+solana_program::declare_id!("Bddx7YVYwD1PMvuYPeaE73H3VH3rdPCSVw7Ap3NesKXF");
 
 #[program]
 pub mod quarry_registry {
@@ -48,7 +48,7 @@ pub mod quarry_registry {
 #[instruction(max_quarries: u16, bump: u8)]
 pub struct NewRegistry<'info> {
     /// [Rewarder].
-    pub rewarder: CpiAccount<'info, Rewarder>,
+    pub rewarder: Account<'info, Rewarder>,
 
     /// [Rewarder] of mines.
     #[account(
@@ -61,24 +61,23 @@ pub struct NewRegistry<'info> {
         payer = payer,
         space = (8 + 1 + 32 + 32 * max_quarries + 100) as usize
     )]
-    pub registry: ProgramAccount<'info, Registry>,
+    pub registry: Account<'info, Registry>,
 
     /// Payer of the [Registry] initialization.
-    #[account(signer)]
-    pub payer: AccountInfo<'info>,
+    pub payer: Signer<'info>,
 
     /// System program.
-    pub system_program: AccountInfo<'info>,
+    pub system_program: Program<'info, System>,
 }
 
 /// Accounts for [quarry_registry::sync_quarry].
 #[derive(Accounts)]
 pub struct SyncQuarry<'info> {
     /// [Quarry] to sync.
-    pub quarry: CpiAccount<'info, Quarry>,
+    pub quarry: Account<'info, Quarry>,
     /// [Registry] to write to.
     #[account(mut)]
-    pub registry: ProgramAccount<'info, Registry>,
+    pub registry: Account<'info, Registry>,
 }
 
 /// The [Registry] of all token mints associated with a [Rewarder].

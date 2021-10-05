@@ -1,19 +1,19 @@
 [package]
-name = "hello_world"
-version = "1.1.0"
+name = "test2"
+version = "0.1.0"
 description = "Created with Anchor"
 edition = "2018"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "hello_world"
+name = "test2"
 
 [features]
 no-entrypoint = []
+no-idl = []
 cpi = ["no-entrypoint"]
+default = []
 
 [dependencies]
-anchor-lang = "0.13.2"
-solana-program = "1.7.8"
-vipers = "0.1.1"
-anchor-spl = "0.13.2"
+anchor-lang = "0.17.0"
+anchor-spl = "0.17.0"

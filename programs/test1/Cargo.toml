@@ -1,0 +1,24 @@
+[package]
+name = "test1"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "test1"
+
+[features]
+no-entrypoint = []
+no-idl = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.17.0"
+anchor-spl = "0.17.0"
+test2 = { path = "../test2", features = ["cpi"] }
+quarry-mine = { path = "../quarry-mine", features = ["cpi"] }
+quarry-mint-wrapper = { path = "../quarry-mint-wrapper", features = [
+  "cpi"
+], version = "1.7.0" }
