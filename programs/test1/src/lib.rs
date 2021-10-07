@@ -3,7 +3,7 @@ use quarry_mine::{Quarry,Rewarder,Miner};
 use anchor_spl::token::TokenAccount;
 use anchor_spl::token::Token;
 use anchor_spl::token::Mint;
-declare_id!("EEfcqbR54VKgweeyRmNNjSH4iutV4EpSHRbJ8ZvXPHXC");
+declare_id!("CDVL2p7dSY5svymGPudk1rphSB2VFyQAQymWQZmW9XPm");
 
 #[program]
 pub mod test1 {
