@@ -12,7 +12,7 @@ use vipers::validate::Validate;
 
 mod account_validators;
 
-solana_program::declare_id!("CsJYUa6sucvv5eEfN21TxgLpxm8DuFPDMcHoUFhgChtt");
+solana_program::declare_id!("HwvNTQqkMnCw5fQXW38Wz1GobhCc3FrzdChhqXQ5NvLj");
 
 #[program]
 pub mod quarry_mint_wrapper {

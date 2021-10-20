@@ -3,7 +3,7 @@ use quarry_mine::{Quarry,Rewarder,Miner};
 use anchor_spl::token::TokenAccount;
 use anchor_spl::token::Token;
 use anchor_spl::token::Mint;
-declare_id!("CDVL2p7dSY5svymGPudk1rphSB2VFyQAQymWQZmW9XPm");
+declare_id!("A8soaG4944wJQgZWSJxtAVkVzrCWYFqQC2xzpsxRYzEi");
 
 #[program]
 pub mod test1 {
@@ -76,7 +76,9 @@ pub mod test1 {
     }
 
     pub fn claim(ctx:Context<ClaimUser>)->ProgramResult{
+        msg!("1");
         let quarry_program=ctx.accounts.quarry_program.clone( );
+        msg!("2");
         let stake=quarry_mine::cpi::accounts::UserClaim{
             authority:ctx.accounts.authority.to_account_info(),
             miner:ctx.accounts.miner.to_account_info(),
@@ -87,6 +89,7 @@ pub mod test1 {
             rewarder:ctx.accounts.rewarder.to_account_info(),
             unused_clock:ctx.accounts.unused_clock.to_account_info(),
         };
+        msg!("3");
         let cpi_accounts=quarry_mine::cpi::accounts::ClaimRewards{
             mint_wrapper:ctx.accounts.mint_wrapper.to_account_info(),
             mint_wrapper_program:ctx.accounts.mint_wrapper_program.to_account_info(),
@@ -96,8 +99,11 @@ pub mod test1 {
             claim_fee_token_account:ctx.accounts.claim_fee_token_account.to_account_info(),
             stake
         };
+        msg!("4444");
         let cpi_ctx = CpiContext::new(quarry_program, cpi_accounts);
+        msg!("5555");
         quarry_mine::cpi::claim_rewards(cpi_ctx);
+        msg!("6");
         
      Ok(())
     }
